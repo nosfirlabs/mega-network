@@ -1,3 +1,5 @@
+import io
+
 import numpy as np
 import tensorflow as tf
 import base64
@@ -46,8 +48,10 @@ for i in range(num_captchas):
 
 # Save the CAPTCHAs as PNG files in base64 format
 for i, captcha in enumerate(captchas):
-    png = tf.keras.preprocessing.image.array_to_img(captcha)
-    encoded_str = base64.b64encode(png.save())
+    png = tf.keras.preprocessing.image.array_to_img(np.squeeze(captcha, axis=0))
+    buffer = io.BytesIO()
+    png.save(buffer, 'png')
+    encoded_str = base64.b64encode(buffer.getvalue())
     print("answer: ", captcha_answers[i])
     print(encoded_str)
 
