@@ -29,3 +29,18 @@ y_test = tf.keras.utils.to_categorical(y_test, 10)
 
 # Train the model
 model.fit(x_train, y_train, batch_size=128, epochs=10, validation_data=(x_test, y_test))
+
+# Generate and save the CAPTCHAs as PNG files in base64 format
+num_captchas = 10
+captchas = []
+captcha_answers = []
+for i in range(num_captchas):
+  captcha = np.random.randint(0, 9, size=(28, 28))
+  captcha = captcha.astype('float32') / 255
+  captcha = np.expand_dims(captcha, axis=2)
+  captcha = np.expand_dims(captcha, axis=0)
+  prediction = model.predict(captcha)
+  captcha_label = np.argmax(prediction)
+  captchas.append(captcha)
+  captcha_answers.append(captcha_label)
+  
