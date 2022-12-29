@@ -26,3 +26,6 @@ x_train /= 255
 x_test /= 255
 y_train = tf.keras.utils.to_categorical(y_train, 10)
 y_test = tf.keras.utils.to_categorical(y_test, 10)
+
+# Train the model
+model.fit(x_train, y_train, batch_size=128, epochs=10, validation_data=(x_test, y_test))
