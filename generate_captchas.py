@@ -37,7 +37,7 @@ num_captchas = 1
 captchas = []
 captcha_answers = []
 for i in range(num_captchas):
-    captcha = np.random.randint(0, 9, size=(150, 75))
+    captcha = np.random.randint(0, 9, size=(28, 28))
     captcha = captcha.astype('float32') / 255
     captcha = np.expand_dims(captcha, axis=2)
     captcha = np.expand_dims(captcha, axis=0)
