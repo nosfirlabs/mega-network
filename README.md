@@ -1,5 +1,5 @@
 
-## CAPTCHA Generator
+## CAPTCHA Generator :)
 
 #### This code generates and saves a set of CAPTCHAs as PNG files in base64 format, using a convolutional neural network (CNN) trained on the MNIST dataset.
 
